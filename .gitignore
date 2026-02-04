@@ -39,8 +39,8 @@ build/
 *.log
 application.properties
 application.yml
-!src/main/resources/application.properties
-!src/main/resources/application.yml
+# Arquivos sensíveis - NÃO commitar
+src/main/resources/application.properties
 
 ### Maven ###
 log/s/
