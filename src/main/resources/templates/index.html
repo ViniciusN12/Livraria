@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Livros</title>
+</head>
+
+<body>
+    <h1>Livros</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Data de Publicação</th>
+                <th>Editora</th>
+                <th>ISBN</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="livro : ${livros}">
+                <td th:text="${livro.titulo}">Título</td>
+                <td th:text="${livro.autor?.nomeAutor}">Autor</td>
+                <td th:text="${livro.dataPublicacao}">Data</td>
+                <td th:text="${livro.editora}">Editora</td>
+                <td th:text="${livro.isbn}">ISBN</td>
+                <td>
+                    <a th:href="@{/livro/atualizar/{id}(id=${livro.idLivro})}">Editar</a>
+                    <a th:href="@{/livro/deletar/{id}(id=${livro.idLivro})}">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <a href="/autores">Lista de autores</a>
+
+    <br>
+    <a href="/livro/cadastrar">Cadastrar novo livro</a>
+    <a href="/autores/cadastrar">Cadastrar novo autor</a>
+</body>
+
+</html>

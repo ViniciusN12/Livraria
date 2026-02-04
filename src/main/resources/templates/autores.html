@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autores</title>
+</head>
+<body>
+    <h1>Autores</h1>
+
+    <a href="/">Home</a>
+
+    <br>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome do Autor</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="autor : ${autores}">
+                <td th:text="${autor.nomeAutor}">Nome do Autor</td>
+                <td>
+                    <a th:href="@{/autores/atualizar/{id}(id=${autor.idAutor})}">Editar</a>
+                    <a th:href="@{/autores/deletar/{id}(id=${autor.idAutor})}">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <a href="/autores/cadastrar">Cadastrar novo autor</a>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Livro</title>
+</head>
+<body>
+    <h1>Atualizar Livro</h1>
+    <form th:action="@{/livro/atualizar/{id}(id=${livro.idLivro})}" th:object="${livro}" method="post">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" th:field="*{titulo}" required>
+        <br><br>
+
+        <label for="autorId">Autor:</label>
+        <select id="autorId" name="autor.idAutor" required>
+            <option value="">Selecione um autor</option>
+            <option th:each="autor : ${autores}" 
+                    th:value="${autor.idAutor}" 
+                    th:text="${autor.nomeAutor}"
+                    th:selected="${autor.idAutor} == ${livro.autor.idAutor}">Autor</option>
+        </select>
+        <br><br>
+
+        <label for="dataPublicacao">Data de Publicação:</label>
+        <input type="date" id="dataPublicacao" th:field="*{dataPublicacao}" required>
+        <br><br>
+
+        <label for="editora">Editora:</label>
+        <input type="text" id="editora" th:field="*{editora}" required>
+        <br><br>
+
+        <label for="isbn">ISBN:</label>
+        <input type="text" id="isbn" th:field="*{isbn}" required>
+        <br><br>
+
+        <button type="submit">Atualizar</button>
+    </form>
+    <br>
+    <a href="/">Voltar para a lista de livros</a>
+</body>
+</html>
